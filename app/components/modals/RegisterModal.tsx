@@ -14,7 +14,7 @@ import Input from '../inputs/Input'
 import Button from '../Button'
 import { toast } from 'react-hot-toast'
 
-const RegisterMoal = () => {
+const RegisterModal = () => {
   const registerModal = useRegisterModal()
   const [isloading, setIsloading] = useState(false)
 
@@ -118,4 +118,4 @@ const RegisterMoal = () => {
   )
 }
 
-export default RegisterMoal
+export default RegisterModal
