@@ -5,6 +5,7 @@ import Container from '../Container'
 import Logo from './Logo'
 import Search from './Search'
 import UserMenu from './UserMenu'
+import Categories from './Categories'
 
 interface NarbarProps {
   currentUser?: SafeUser | null
@@ -23,6 +24,7 @@ const Narbar: React.FC<NarbarProps> = ({ currentUser }) => {
           </div>
         </Container>
       </div>
+      <Categories />
     </div>
   )
 }
