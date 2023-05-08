@@ -7,6 +7,7 @@ import { useCallback, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 
 import useRegisterModal from '@/app/hooks/useRegisterModal'
+import useLoginModal from '@/app/hooks/useLoginModal'
 
 import Modal from './Modal'
 import Heading from '../Heading'
@@ -17,6 +18,7 @@ import { signIn } from 'next-auth/react'
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal()
+  const loginModal = useLoginModal()
   const [isloading, setIsloading] = useState(false)
 
   const {
@@ -40,6 +42,10 @@ const RegisterModal = () => {
       .finally(() => setIsloading(false))
   }
 
+  const toggle = useCallback(() => {
+    registerModal.onClose()
+    loginModal.onOpen()
+  }, [loginModal, registerModal])
   const bodyContent = (
     <div className='flex flex-col gap-4'>
       <Heading title='Welcome to Airbnb' subtitle='Create an account!' />
@@ -96,7 +102,7 @@ const RegisterModal = () => {
         <div className='justify-center flex flex-row items-center gap-2'>
           <div>Already have an account?</div>
           <div
-            onClick={registerModal.onClose}
+            onClick={toggle}
             className='text-neutral-500 cursor-pointer hover:underline'
           >
             Log in
