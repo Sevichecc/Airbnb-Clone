@@ -10,6 +10,7 @@ import { categories } from '../navbar/Categories'
 import CatergoryInput from '../inputs/CategoryInput'
 import CountrySelect from '../inputs/CountrySelect'
 import Counter from '../inputs/Counter'
+import ImageUpload from '../inputs/ImageUpload'
 
 import dynamic from 'next/dynamic'
 
@@ -54,6 +55,7 @@ const RentModal = () => {
   const guestCount = watch('guestCount');
   const roomCount = watch('roomCount');
   const bathroomCount = watch('bathroomCount');
+  const imageSrc = watch('imageSrc');
 
   const Map = useMemo(() => dynamic(() => import('../Map'), {
     ssr: false
@@ -144,25 +146,34 @@ const RentModal = () => {
           subtitle="What amenitis do you have?"
         />
         <Counter
-          onChange={(value) => setCustomValue('guestCount', value)}
+          onChange={value => setCustomValue('guestCount', value)}
           value={guestCount}
           title="Guests"
           subtitle="How many guests do you allow?"
         />
         <hr />
         <Counter
-          onChange={(value) => setCustomValue('roomCount', value)}
+          onChange={value => setCustomValue('roomCount', value)}
           value={roomCount}
           title="Rooms"
           subtitle="How many rooms do you have?"
         />
         <hr />
         <Counter
-          onChange={(value) => setCustomValue('bathroomCount', value)}
+          onChange={value => setCustomValue('bathroomCount', value)}
           value={bathroomCount}
           title="Bathrooms"
           subtitle="How many bathrooms do you have?"
         />
+      </div>
+    )
+  }
+
+  if (step === STEPS.IMAGES) {
+    bodyContent = (
+      <div className='flex flex-col gap-8'>
+        <Heading title='Add a photo to your place' subtitle='Show guests what your place looks like!' />
+        <ImageUpload value={imageSrc} onChange={value => setCustomValue('imageSrc', value)} />
       </div>
     )
   }
