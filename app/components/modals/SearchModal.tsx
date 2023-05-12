@@ -2,11 +2,12 @@
 
 import useSearchModal from "@/app/hooks/useSearchModal";
 import qs from "query-string";
+import dynamic from "next/dynamic";
+
 import Modal from "./Modal";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useMemo, useCallback } from "react";
 import { Range } from "react-date-range";
-import dynamic from "next/dynamic";
 import CountrySelect, { CountrySelectValue } from "../inputs/CountrySelect";
 import { formatISO } from "date-fns";
 import Heading from "../Heading";

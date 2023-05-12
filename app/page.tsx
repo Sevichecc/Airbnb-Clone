@@ -9,12 +9,9 @@ interface HomeProps {
   searchParams: IListingsParams
 }
 
-
 const Home = async ({ searchParams }: HomeProps) => {
-
   const listings = await getListings(searchParams)
   const currentUser = await getCurrentUser()
-
 
   if (listings.length === 0) {
     return (
@@ -38,15 +35,14 @@ const Home = async ({ searchParams }: HomeProps) => {
           2xl:grid-cols-6
           gap-8
         ">
-          {listings.map((listing) => {
-            return (
-              <ListingCard key={listing.id} data={listing} currentUser={currentUser} />
-            )
-          })}
+          {listings.map((listing: any) => (
+            <ListingCard key={listing.id} data={listing} currentUser={currentUser} />
+          )
+          )}
         </div>
       </Container>
     </ClientOnly>
   )
 }
 
-export default Home
+export default Home;
