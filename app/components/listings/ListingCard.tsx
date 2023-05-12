@@ -13,7 +13,7 @@ import useCountries from "@/app/hooks/useCountries"
 
 interface ListingCardProps {
   data: SafeListing
-  reservation?: SafeReservation[]
+  reservation?: SafeReservation
   onAction?: (id: string) => void
   disabled?: boolean
   actionLabel?: string
